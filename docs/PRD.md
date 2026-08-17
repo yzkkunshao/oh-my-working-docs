@@ -65,13 +65,12 @@
 - ✅ **阶段状态机**：记录「当前处于哪个阶段」+ 每个阶段的快照历史，不约束阶段间跳转方向
 - ✅ **全局目录**：`~/.workflow-agent/projects/<项目路径转换>/`，存放各阶段当前输出文件与 `config.json`（项目路径特殊字符替换为 `-`）；快照不在此目录，统一存 VS Code `globalStorageUri`
 - ✅ **软链接**：项目内 `docs/.workflow/` 整体指向全局目录，使输出物在 codebase 中可见但不实际占用 codebase 空间
-- **Workflow Agent**：（待审查填充）
 - **Chat Flow UI**：（待审查填充）
-- **Claude Agent SDK**：（待审查填充）
+- **Claude Agent SDK**：Anthropic 官方 Agent SDK，npm 包 `@anthropic-ai/claude-agent-sdk`，插件内部基于它实现 Agent 会话
 
 ## 核心问题
 
-- ✅ 多 API key 并行：现有 AI 编程工具单一 API key 配置无法同时用不同 key 跑不同任务，需按阶段独立配置
+- ✅ 多 API key 并行：**核心问题是按阶段切换 API key 配置，且切换不能影响正在运行的 Claude Code CLI**——现有 AI 编程工具单一 API key 配置无法同时用不同 key 跑不同任务，需按阶段独立配置且与 CLI 并行互不干扰
 - ✅ 阶段隔离与产物共享：各阶段对话上下文需互相独立，但输出产物需互相可访问（通过软链接共享）
 - ✅ 产物回滚：开发阶段输出的文件/决策有时不应进入 codebase，且经常需要回滚，需快照机制支持
 - ✅ 与 Claude Code CLI 并行：插件用 Agent SDK 跑独立会话，与 CLI 进程级隔离，互不冲突
