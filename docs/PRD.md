@@ -1,12 +1,12 @@
 # PRD：多 Tab Claude 克隆插件
 
-> 版本：V0.3（方向大改）
+> 版本：V0.3
 > 状态：核心要点记录中，待后续逐节展开
-> 生成方式：prd-writing skill + grill-me 逐节审查
+> 生成方式：prd-writing skill + grill-me skill逐节审查
 
 ## 背景
 
-- 不同模型之间差异巨大，程序员往往会使用不同的模型处理不同场景的任务（如 DeepSeek、MiniMax、GLM，Hy3 等等）
+- 不同模型之间差异巨大，程序员也同时拥有多个ai token套餐，往往会使用不同的模型处理不同场景的任务（如 GLM做设计、DeepSeek做开发编码、MiniMax做code review等等）
 - CC Switch 搭配 Claude Code 去处理不同场景任务时存在一个弊端：**不能同时并行使用多个模型**处理多个场景的任务（CC Switch 为全局切换，同一时刻仅一套配置生效）
 - 更好的应用形态：用户可以**同时启用多个对话，每个对话加载不同的配置**——独立使用不同的模型，以及加载不同的 Skills 和 CLAUDE.md
 - 需要**把 CC Switch 内置到对话流ai agent工具当中**：构建多 Tab Claude 克隆插件，多 tab 对话、每 tab 独立 session 进程、每 tab 独立加载一套模板配置并行运行
