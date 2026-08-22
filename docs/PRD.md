@@ -33,7 +33,7 @@
 
 - **安全**：API key 只存 VS Code SecretStorage，不在日志、UI、错误信息中明文输出（一律遮罩显示），不写入任何配置/日志文件
 - **性能**：对同时存活的 SDK 进程数设上限 + 空闲回收，避免多 tab 并行耗尽系统资源
-- **UI 形态**：VS Code Webview + React，面板内自绘多 tab 栏（对话 UI、模板选择、模板管理界面均在面板内实现，交互参考 CC Switch）
+- **UI 形态**：VS Code Webview + Vue，面板内自绘多 tab 栏（对话 UI、模板选择、模板管理界面均在面板内实现，交互参考 CC Switch）
 - **会话存储**：会话记录（对话历史 + 配置快照）统一存 VS Code `globalStorageUri`
 
 ## 名词解释
