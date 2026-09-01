@@ -11,6 +11,8 @@
 - 更好的应用形态：用户可以**同时启用多个对话，每个对话加载不同的配置**——独立使用不同的模型，以及加载不同的 Skills 和 CLAUDE.md
 - 需要**把 CC Switch 内置到对话流ai agent工具当中**：构建多 Tab Claude 克隆插件，多 tab 对话、每 tab 独立 session 进程、每 tab 独立加载一套模板配置并行运行
 
+- PRD template engineering 实现每一个template 的scope关联，每个template配置必须通过grill-me skill审查scope是否已经固定
+
 ## 需求
 
 ### 功能性需求
@@ -93,5 +95,8 @@
 - （待审查填充）
 
 ## 业务规则
+
+template 规则，template一个目录只允许一个，避免session冲突：
+session 是跟目录绑定的，恢复时只看到该目录的会话。所以两个 session 放在同一个目录并行 → 它们会同时改同一份文件，最后互相覆盖、git 状态一团糟。想真并行就必须 git worktree 各占一个目录
 
 - （待审查填充）
